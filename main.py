@@ -1,15 +1,16 @@
-
 def init():
+    stack = []
+    
     while True:
         doGUI()
         command = checkCommand()
         if command == 0:
             readAndPush()
-        else if command == 1:
+        elif command == 1:
             readAndPop()
-        else if command == 2:
+        elif command == 2:
             displayTop()
-        else if command == 3:
+        elif command == 3:
             exitApp()
 
     
