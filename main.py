@@ -35,7 +35,7 @@ def displayTop(stack):
 
 
 def exitApp():
-
+    sys.exit()
 
 
 
