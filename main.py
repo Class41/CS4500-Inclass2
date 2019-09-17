@@ -1,33 +1,32 @@
 def init():
     stack = []
-    
+
     while True:
         doGUI()
         command = checkCommand()
         if command == 0:
-            readAndPush()
+            readAndPush(stack)
         elif command == 1:
-            readAndPop()
+            readAndPop(stack)
         elif command == 2:
-            displayTop()
+            displayTop(stack)
         elif command == 3:
             exitApp()
 
     
     
-def readAndPush():
+def readAndPush(stack):
+
+
+
+
+def readAndPop(stack):
 
 
 
 
 
-def readAndPop():
-
-
-
-
-
-def displayTop()):
+def displayTop(stack):
 
 
 
