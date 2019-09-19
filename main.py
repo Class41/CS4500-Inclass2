@@ -49,7 +49,20 @@ def readAndPush():
 # popping off the last of the list
 def readAndPop():
     global stack
-    stack.pop()
+	
+	while True:
+		c = input("You are about to remove " + str(stack[-1]) + " from the stack. \nIs this correct? Y for yes or N for No")
+			
+		if c == y:
+			stack.pop()
+			return [True, "Removed " + str(stack[-1]) + " from the stack."]
+		elif c == n:
+			print("Returning to main menu")
+			return
+		else:
+			print("Invalid characters, please try again")
+	
+    
     return stack
 
 # Display last of the list
