@@ -1,3 +1,5 @@
+#Vasyl Onufriyev, Caleb Freeman, Freddie Tao
+
 stack = []
 
 def init():
