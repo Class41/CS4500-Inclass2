@@ -1,41 +1,41 @@
 stack = []
 
-
 def init():
     nextPrint = ""
+    result = [True, "OK"]
+    
     while True:
         doGUI(nextPrint)
-        nextPrint = ""
         command = checkCommand()
-
         if command == 0:
-            nextPrint = readAndPush()
+            result = readAndPush()
         elif command == 1:
-            nextPrint = readAndPop()
+            result = readAndPop()
         elif command == 2:
-            nextPrint = displayTop()
+            result = displayTop()
         elif command == 3:
             exitApp()
+        
+        
 
 # appending whatever character
-
-
 def readAndPush():
     global stack
-    stack.append(c)
-    return stack
+    
+    c = input("What character would you like to add to the stack?")
+    if len(c) == 1:
+        stack.append(c)
+        return [True, "Added character to the stack."]
+    else:
+        return [False, "Too many characters added! Was expecting 1!"]
 
 # popping off the last of the list
-
-
 def readAndPop():
     global stack
     stack.pop()
     return stack
 
 # Display last of the list
-
-
 def displayTop():
     global stack
     return stack[-1]
