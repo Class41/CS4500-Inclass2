@@ -6,30 +6,32 @@ def init():
     global stack
     nextPrint = ""
     result = [True, "OK"]
-    
+    doGUI(nextPrint)
+
     while True:
-        doGUI(nextPrint)
         command = checkCommand()
         nextPrint = ""
+        result = [True, "OK"]
         
         if command != False:
-            if command == 0:
+            if command == 1:
                 result = readAndPush()
-            elif command == 1:
-                result = readAndPop()
             elif command == 2:
-                result = displayTop()
+                result = readAndPop()
             elif command == 3:
+                result = displayTop()
+            elif command == 5:
                 exitApp()
             
             nextPrint = result[1]
             
             if result[0] == True:
                 print(str(stack))
+            
+        doGUI(nextPrint)
         
 def checkCommand():
     userSelection = input()
-    
     try:
         userSelection = int(userSelection)
         return userSelection
@@ -41,38 +43,38 @@ def checkCommand():
 def readAndPush():
     global stack
     
-    c = input("What character would you like to add to the stack?")
+    c = input("What character would you like to add to the stack?\n")
+    
     if len(c) == 1:
         stack.append(c)
         return [True, "Added character to the stack."]
     else:
-        return [False, "Too many characters added! Was expecting 1!"]
+        return [False, "Too many characters entered! Was expecting 1!"]
 
 # popping off the last of the list
 def readAndPop():
     global stack
+    
+    if not stack:
+        return[False, "Cannot pop an empty stack"]
 	
-	if not stack:
-        return[False, "empty list"]
-	
-	while True:
-		c = input("You are about to remove " + str(stack[-1]) + " from the stack. \nIs this correct? Y for yes or N for No")
-		c = c.lower()
-		if c == "y":
-			stack.pop()
-			return [True, "Removed " + str(stack[-1]) + " from the stack."]
-		elif c == "n":
-			print("Returning to main menu")
-			return
-		else:
-			print("Invalid characters, please try again")
+    while True:
+        c = input("You are about to remove " + str(stack[-1]) + " from the stack. \nIs this correct? Y for yes or N for No\n")
+        if c.lower() == "y":
+            popped = stack.pop()
+            return [True, "Removed " + popped + " from the stack."]
+        elif c == "n":
+            print("Returning to main menu")
+            return
+        else:
+            print("Invalid characters, please try again")
 	
 
 # Display last of the list
 def displayTop():
     global stack
     if not stack:
-        return[False, "empty list"]
+        return[False, "Cannot see the top of an empty stack."]
     else:
         x = stack.pop()
         stack.append(x)
@@ -83,7 +85,7 @@ def exitApp():
 
 
 def doGUI(nextPrint):
-    guiOut = "/** Choose an action by number **\\\n\t0 -> Push to stack\n\t1 -> Pop to stack\n\t2 -> See top of stack\n\t3 -> Exit\n\n\n" + nextPrint
+    guiOut = "/** Choose an action by number **\\\n\t1 -> Push to stack\n\t2 -> Pop from stack\n\t3 -> See top of stack\n\t4 -> See Stack\n\t5 -> Exit\n\n" + nextPrint
     print(guiOut)
 
 
