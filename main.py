@@ -51,14 +51,21 @@ def readAndPush():
 # popping off the last of the list
 def readAndPop():
     global stack
-    stack.pop()
-    return stack
+    if not stack:
+        return[False, "empty list"]
+    else:
+        x = stack.pop()
+        return[True, x]
 
 # Display last of the list
 def displayTop():
     global stack
-    return stack[-1]
-
+    if not stack:
+        return[False, "empty list"]
+    else:
+        x = stack.pop()
+        stack.append(x)
+        return[True, x]
 
 def exitApp():
     exit()
