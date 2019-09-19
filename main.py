@@ -24,7 +24,7 @@ def init():
             
             nextPrint = result[1]
             
-            if result[0]:
+            if result[0] == True:
                 print(str(stack))
         
 def checkCommand():
