@@ -1,3 +1,5 @@
+#Vasyl Onufriyev, Caleb Freeman, Freddie Tao
+
 stack = []
 
 def init():
@@ -22,7 +24,7 @@ def init():
             
             nextPrint = result[1]
             
-            if result[0]:
+            if result[0] == True:
                 print(str(stack))
         
 def checkCommand():
@@ -62,14 +64,16 @@ def readAndPop():
 		else:
 			print("Invalid characters, please try again")
 	
-    
-    return stack
 
 # Display last of the list
 def displayTop():
     global stack
-    return stack[-1]
-
+    if not stack:
+        return[False, "empty list"]
+    else:
+        x = stack.pop()
+        stack.append(x)
+        return[True, x]
 
 def exitApp():
     exit()
