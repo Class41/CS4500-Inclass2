@@ -22,11 +22,23 @@ import turtle
 stack = [] #Global stack, used for all functions. Prevents having to pass/return every time
 maxStack = 10 #Sets max stack size
 
+height = 26
+length = 100
+
 def init():
     global stack #Reference to global stack
     nextPrint = "" #What to print on the next iteration of the graphics display
     result = [True, "OK"] #True to display array, False to not, Message to display
-    doGUI(nextPrint) #Print GUI
+    
+    screen = turtle.Screen()
+    print(screen.delay())
+    pen = turtle.Turtle()
+    pen.pensize(3)
+    pen.ht()
+    pen.speed("fastest")
+    
+    doGUI(nextPrint, pen, result[0]) #Print GUI
+
 
     while True:
         command = checkCommand() #Get user command
@@ -48,7 +60,7 @@ def init():
             if result[0] == True:
                 print(str(stack))
             
-        doGUI(nextPrint)
+        doGUI(nextPrint, pen, result[0])
 
 # Check what command the user wants to do
 def checkCommand(): 
@@ -110,32 +122,53 @@ def exitApp():
     exit()
 
 # Display GUI
-def doGUI(nextPrint):
+def doGUI(nextPrint, pen, redrawStack):
     guiOut = "/** Choose an action by number **\\\n\t1 -> Push to stack\n\t2 -> Pop from stack\n\t3 -> See top of stack\n\t4 -> See Stack\n\t5 -> Exit\n\n" + nextPrint
-
-    pen = turtle.Turtle()
-    pen.pensize(3)
-    
-    for box in range(10):
-        DrawStack(pen)
-
+    if redrawStack == True:
+        DrawStack(pen)    
     print(guiOut)
 
 def DrawStack(pen):
-    height = 25
-    length = 100
+    turtle.Screen().clear()
+    pen.penup()
+    pen.goto(0, -height * maxStack)
+    pen.pendown()
+    
+    for cnt in range(0, len(stack)):
+        if len(stack) - 1 == cnt:
+            pen.speed("normal")  
+            
+        pen.forward(length * .5)
+        pen.left(90)
+        pen.penup()
+        pen.forward(height * .25)
+        pen.pendown()
+        pen.write(stack[cnt], False, align="center")
+        pen.penup()
+        pen.left(180)
+        pen.forward(height * .25)
+        pen.pendown()
+        pen.left(90)
+        pen.forward(length * .5)
+        pen.left(90)
+        pen.forward(height)
+        pen.left(90)
+        pen.forward(length)
+        pen.left(90)
+        pen.forward(height)
+        pen.left(180)
+        pen.forward(height)
+        pen.right(90)
 
-    pen.forward(length)
-    pen.right(90)
-    pen.forward(height)
-    pen.right(90)
-    pen.forward(length)
-    pen.right(90)
-    pen.forward(height)
-    pen.right(180)
-    pen.forward(height)
     pen.left(90)
-
+    pen.penup()
+    pen.forward(height)
+    pen.pendown()
+    pen.write("TOP OF STACK", False, align="Center")
+    pen.right(90)
+    
+    pen.speed("fastest") 
+    
 
 
 if __name__ == "__main__":
