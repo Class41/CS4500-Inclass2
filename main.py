@@ -31,6 +31,12 @@ def init():
             
         doGUI(nextPrint)
         
+	pen = turtle.Turtle()
+	pen.pensize(3)
+
+	for box in range(10):
+		DrawStack(pen)
+	
 def checkCommand():
     userSelection = input()
     try:
@@ -91,6 +97,22 @@ def exitApp():
 def doGUI(nextPrint):
     guiOut = "/** Choose an action by number **\\\n\t1 -> Push to stack\n\t2 -> Pop from stack\n\t3 -> See top of stack\n\t4 -> See Stack\n\t5 -> Exit\n\n" + nextPrint
     print(guiOut)
+
+def DrawStack(pen):
+    height = 25
+    length = 100
+
+    pen.forward(length)
+    pen.right(90)
+    pen.forward(height)
+    pen.right(90)
+    pen.forward(length)
+    pen.right(90)
+    pen.forward(height)
+    pen.right(180)
+    pen.forward(height)
+    pen.left(90)
+
 
 
 if __name__ == "__main__":
