@@ -1,20 +1,37 @@
-#Vasyl Onufriyev, Caleb Freeman, Freddie Tao
+"""
+# Authors: Vasyl Onufriyev, Caleb Freeman, Freddie Tao
+# Date: 9.24.19
+# Class: CS4500 Professor Keith Miller
 
-stack = []
-maxStack = 10
+# Purpose #
+The purpose of this program is to assist the target audience in understanding how stacks work.
+The program offers very simple stack operations such as pushing, popping, and peeking at the top
+of the stack. As a side feature, it allows the user to see the stack.
+
+# Runtime Info #
+The program consists of a infinite loop which runs a menu, asks a user for a command, then executes the command. 
+If any user input is required, the user is queried for the requested information. Stack is limited to a size of 10.
+On successful operation, the stack is displayed along with a message. On failure, a error message is displayed and the user
+is sent back to the menu phase.
+
+# To run #
+python3.7 main.py
+"""
+stack = [] #Global stack, used for all functions. Prevents having to pass/return every time
+maxStack = 10 #Sets max stack size
 
 def init():
-    global stack
-    nextPrint = ""
-    result = [True, "OK"]
-    doGUI(nextPrint)
+    global stack #Reference to global stack
+    nextPrint = "" #What to print on the next iteration of the graphics display
+    result = [True, "OK"] #True to display array, False to not, Message to display
+    doGUI(nextPrint) #Print GUI
 
     while True:
-        command = checkCommand()
+        command = checkCommand() #Get user command
         nextPrint = ""
         result = [True, "OK"]
         
-        if command != False:
+        if command != False: #Figure what the user wanted to do
             if command == 1:
                 result = readAndPush()
             elif command == 2:
@@ -30,21 +47,22 @@ def init():
                 print(str(stack))
             
         doGUI(nextPrint)
-        
-def checkCommand():
+
+# Check what command the user wants to do
+def checkCommand(): 
     userSelection = input()
-    try:
+    try: #Try to parse an int from the input
         userSelection = int(userSelection)
         return userSelection
     except Exception as e:
         print("Unable to convert input to acceptable menu command.")
         return False
 
-# appending whatever character
+# Appending whatever character
 def readAndPush():
     global stack
     
-    if len(stack) >= maxStack:
+    if len(stack) >= maxStack: # Check stack bounds
         return [False, "Stack is full! Max is 10!"]
         
     c = input("What character would you like to add to the stack?\n")
@@ -84,10 +102,11 @@ def displayTop():
         stack.append(x)
         return[True, x]
 
+# Exit program
 def exitApp():
     exit()
 
-
+# Display GUI
 def doGUI(nextPrint):
     guiOut = "/** Choose an action by number **\\\n\t1 -> Push to stack\n\t2 -> Pop from stack\n\t3 -> See top of stack\n\t4 -> See Stack\n\t5 -> Exit\n\n" + nextPrint
     print(guiOut)
