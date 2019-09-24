@@ -1,6 +1,7 @@
 #Vasyl Onufriyev, Caleb Freeman, Freddie Tao
 
 stack = []
+maxStack = 10
 
 def init():
     global stack
@@ -43,6 +44,9 @@ def checkCommand():
 def readAndPush():
     global stack
     
+    if len(stack) >= maxStack:
+        return [False, "Stack is full! Max is 10!"]
+        
     c = input("What character would you like to add to the stack?\n")
     
     if len(c) == 1:
