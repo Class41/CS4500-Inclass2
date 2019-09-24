@@ -17,6 +17,15 @@ is sent back to the menu phase.
 # To run #
 python3.7 main.py
 """
+
+"""
+T O D O:
+
+1. Highlight the top block when "show top" is selected as a command.
+2. Update code comments
+3. SUBMIT WITH CMD VER
+
+"""
 import turtle
 
 stack = [] #Global stack, used for all functions. Prevents having to pass/return every time
@@ -129,15 +138,28 @@ def doGUI(nextPrint, pen, redrawStack):
     print(guiOut)
 
 def DrawStack(pen):
+    #Prepare to write stack. Clear screen, goto initial pos
     turtle.Screen().clear()
     pen.penup()
     pen.goto(0, -height * maxStack)
     pen.pendown()
     
+    #This section writes the bottom text
+    pen.right(90)
+    pen.penup()
+    pen.forward(height * .5)
+    pen.write(" BOTTOM", False, align="left")
+    pen.left(180)
+    pen.penup()
+    pen.forward(8)
+    pen.right(90)
+    pen.pendown()
+    
+    #For each element in the stack, print it. On last one, go slower.
     for cnt in range(0, len(stack)):
         if len(stack) - 1 == cnt:
             pen.speed("normal")  
-            
+           
         pen.forward(length * .5)
         pen.left(90)
         pen.penup()
@@ -160,6 +182,7 @@ def DrawStack(pen):
         pen.forward(height)
         pen.right(90)
 
+    #Print top of stack text
     pen.left(90)
     pen.penup()
     pen.forward(height)
@@ -167,6 +190,7 @@ def DrawStack(pen):
     pen.write("TOP OF STACK", False, align="Center")
     pen.right(90)
     
+    #Proceed at sanic speed
     pen.speed("fastest") 
     
 
