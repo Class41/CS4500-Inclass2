@@ -149,15 +149,15 @@ def DrawStack(pen):
     #For each element in the stack, print it. On last one, go slower.
     for cnt in range(0, len(stack)):
         if len(stack) - 1 == cnt:
-            pen.speed("normal")
-            pen.color("#ff0000")
+            pen.speed("normal")  # slows the pen speed for drawing the most recent stack box
+            pen.color("#ff0000")  # changes the color of the top stack box
            
         pen.forward(length * .5)
         pen.left(90)
         pen.penup()
         pen.forward(height * .25)
         pen.pendown()
-        pen.write(stack[cnt], False, align="center")
+        pen.write(stack[cnt], False, align="center") # resets pen location from were it began
         pen.penup()
         pen.left(180)
         pen.forward(height * .25)
@@ -187,6 +187,6 @@ def DrawStack(pen):
     pen.speed("fastest") 
     
 
-
+# captured main redirect
 if __name__ == "__main__":
     init()
