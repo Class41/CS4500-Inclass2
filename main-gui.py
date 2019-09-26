@@ -18,14 +18,6 @@ is sent back to the menu phase.
 python3.7 main.py
 """
 
-"""
-T O D O:
-
-1. Highlight the top block when "show top" is selected as a command.
-2. Update code comments
-3. SUBMIT WITH CMD VER
-
-"""
 import turtle
 
 stack = [] #Global stack, used for all functions. Prevents having to pass/return every time
@@ -40,7 +32,6 @@ def init():
     result = [True, "OK"] #True to display array, False to not, Message to display
     
     screen = turtle.Screen()
-    print(screen.delay())
     pen = turtle.Turtle()
     pen.pensize(3)
     pen.ht()
@@ -148,7 +139,7 @@ def DrawStack(pen):
     pen.right(90)
     pen.penup()
     pen.forward(height * .5)
-    pen.write(" BOTTOM", False, align="left")
+    pen.write("   BOTTOM", False, align="left")
     pen.left(180)
     pen.penup()
     pen.forward(8)
@@ -158,7 +149,8 @@ def DrawStack(pen):
     #For each element in the stack, print it. On last one, go slower.
     for cnt in range(0, len(stack)):
         if len(stack) - 1 == cnt:
-            pen.speed("normal")  
+            pen.speed("normal")
+            pen.color("#ff0000")
            
         pen.forward(length * .5)
         pen.left(90)
@@ -189,6 +181,7 @@ def DrawStack(pen):
     pen.pendown()
     pen.write("TOP OF STACK", False, align="Center")
     pen.right(90)
+    pen.color("#000000")
     
     #Proceed at sanic speed
     pen.speed("fastest") 
