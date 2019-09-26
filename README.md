@@ -7,7 +7,7 @@ Summary:
 
 1-CONTENTS
 ----------
-main.pi         - source code
+main-gui.py     - source code
 README          - this file
 
 2-WORKS CITED
@@ -17,7 +17,7 @@ README          - this file
 3-COMMAND LINE ARGUMENTS
 ----------
 Usage: Using pycharm:
-    >> python main.py
+    >> python main-gui.py
 
 default settings:
 
@@ -25,7 +25,7 @@ default settings:
 4-CODE COMPILATION:
 ---------
 In my computer I am able to run the make file an execute with 
-example:
+example: >> python main-gui.py
 
 5-DESIGN DECISIONS & ISSUES
 ---------

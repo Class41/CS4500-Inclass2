@@ -37,15 +37,15 @@ def init():
     pen.ht()
     pen.speed("fastest")
     
-    doGUI(nextPrint, pen, result[0]) #Print GUI
+    doGUI(nextPrint, pen, result[0]) # Print GUI
 
 
     while True:
-        command = checkCommand() #Get user command
+        command = checkCommand() # Get user command
         nextPrint = ""
         result = [True, "OK"]
         
-        if command != False: #Figure what the user wanted to do
+        if command != False: # Figure what the user wanted to do
             if command == 1:
                 result = readAndPush()
             elif command == 2:
@@ -92,7 +92,7 @@ def readAndPush():
 def readAndPop():
     global stack
     
-    if not stack:
+    if not stack: # empty stack
         return[False, "Cannot pop an empty stack"]
 	
     while True:
@@ -130,9 +130,9 @@ def doGUI(nextPrint, pen, redrawStack):
 
 def DrawStack(pen):
     #Prepare to write stack. Clear screen, goto initial pos
-    turtle.Screen().clear()
+    turtle.Screen().clear() # clear turtle screen for drawing stack
     pen.penup()
-    pen.goto(0, -height * maxStack)
+    pen.goto(0, -height * maxStack) # starts stack graphics at base of screen
     pen.pendown()
     
     #This section writes the bottom text
@@ -183,7 +183,7 @@ def DrawStack(pen):
     pen.right(90)
     pen.color("#000000")
     
-    #Proceed at sanic speed
+    # Proceed at sanic speed
     pen.speed("fastest") 
     
 
